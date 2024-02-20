@@ -36,7 +36,9 @@ const onRaceChange = () => {
 </script>
 
 <template>
-    <div class="filters">
+    <div class="char-holder">
+        <div class="char-inner">
+    <div class="search">
       <input
         class="search-box"
 		placeholder="Søk på navn..."
@@ -51,6 +53,7 @@ const onRaceChange = () => {
             </option>
         </select>
     </div>
+</div>
     <div class="list">
         <table class="styled-table">
             <thead>
@@ -67,14 +70,24 @@ const onRaceChange = () => {
         </tbody>
         </table>
     </div>
+</div>
 </template>
 
 <style scoped>
 .filters {
+    margin-top: 10px;
+}
+.char-holder {
     margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.char-inner {
+    padding: 10px;
 }
 .list {
-    margin-top: 30px;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
 }
 
 table {

@@ -28,7 +28,7 @@ const filteredChars = computed(() => {
     }
     return characters.filter( char => 
         char.name.toLowerCase().includes(filter.value.toLowerCase())
-    )
+)
 });
 const onRaceChange = () => {
     console.log(filterRace.value);   

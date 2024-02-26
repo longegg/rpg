@@ -60,8 +60,8 @@ a,
   display: flex;
   justify-content: space-between;
 }
-.styled-table__flex:hover i {
-  color: #000;
+.styled-table__flex:hover .sort-icon {
+  color: #333;
 }
 
 /* CSS */
@@ -112,18 +112,18 @@ a,
 
 /* Icons */
 
-.gg-sort-az, .gg-sort-za {
-  /* This value will multiple the actual size  */
+.gg-arrows-v, .gg-arrows-v-alt {
   --ggs: 0.9;
-  color: #666;
+  color: #999;
+  width: 22px;
+  margin-right: 5px;
 }
-.gg-sort-az:hover, .gg-sort-za:hover {
-  /* This value will multiple the actual size  */
-  color: red;
-}
-.gg-arrows-v-alt {
+.gg-arrow-up, .gg-arrow-down {
   --ggs: 0.8;
-  color: #666;
+  color: #333;
+}
+.gg-close {
+  --ggs: 0.8;
 }
 
 /* Utility */

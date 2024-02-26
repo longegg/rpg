@@ -17,6 +17,7 @@ let filteredChars = ref(characters);
 let searchActive = ref(false);
 let filtersActive = ref(false);
 let sortOrder = ref(1);
+let sortActive = ref(false);
 
 function submit() {
     if (!searchInput.value) {
@@ -86,6 +87,7 @@ function sortDate() {
         }
     });
     sortOrder.value = -sortOrder.value;
+    sortActive.value = true;
 }
 </script>
 
@@ -110,16 +112,7 @@ function sortDate() {
                         class="search-form__reset clear"
                         aria-label="Nullstill søket"
                     >
-                        <svg width="20" height="20" viewBox="0 0 20 20">
-                            <path
-                                d="M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z"
-                                stroke="currentColor"
-                                fill="none"
-                                fill-rule="evenodd"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            ></path>
-                        </svg>
+                        <i class="gg-close"></i>
                     </button>
                 </div>
                 <button
@@ -127,16 +120,7 @@ function sortDate() {
                     type="submit"
                     aria-label="search"
                 >
-                    <svg width="20" height="20" class="search-form__label" viewBox="0 0 20 20">
-                        <path
-                            d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
-                            stroke="currentColor"
-                            fill="none"
-                            fill-rule="evenodd"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        ></path>
-                    </svg>
+                    <i class="gg-search"></i>
                 </button>
             </form>
         </div>
@@ -168,8 +152,9 @@ function sortDate() {
                         <th @click="sortDate">
                             <div class="styled-table__flex">
                                 Lagret
-                                <i class="gg-arrows-v-alt sort-icon"></i>
-                                <i class="gg-shape-triangle hidden sort-icon sort-icon--flipped"></i>
+                                <i v-if="!sortActive" class="gg-arrows-v-alt sort-icon"></i>
+                                <i v-if="sortActive && sortOrder == -1" class="gg-arrow-up"></i>
+                                <i v-if="sortActive && sortOrder == 1" class="gg-arrow-down"></i>
                             </div>
                         </th>
                     </tr>
@@ -200,10 +185,10 @@ function sortDate() {
 .char-holder {
     margin-top: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.10);
 }
 .char-inner {
-    padding: 10px;
+    padding: 20px 10px 10px;
 }
 .list {
     padding-top: 10px;
@@ -232,8 +217,6 @@ table {
     flex-direction: column;
     gap: 0;
     cursor: pointer;
-}
-.sort-icon {
 }
 .sort-icon--flipped {
     transform: rotate(180deg) scale(0.5);

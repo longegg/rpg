@@ -15,6 +15,6 @@ const props = defineProps<{
     <td>{{ props.character.race }}</td>
     <td>{{ props.character.className }}</td>
     <td>{{ props.character.level }}</td>
-    <td>{{ formatDate(props.character.createdAt) }}</td>
+    <td>{{ formatDate(props.character.createdAt).value }}</td>
 </tr>
 </template>

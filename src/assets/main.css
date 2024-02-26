@@ -125,6 +125,9 @@ a,
 .gg-close {
   --ggs: 0.8;
 }
+.gg-sort-az {
+  color: #4a4a4a;
+}
 
 /* Utility */
 

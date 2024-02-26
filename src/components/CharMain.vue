@@ -16,6 +16,7 @@ const searchInput = ref('');
 let filteredChars = ref(characters);
 let searchActive = ref(false);
 let filtersActive = ref(false);
+let filtersOpen = ref(false);
 let sortOrder = ref(1);
 let sortActive = ref(false);
 
@@ -45,6 +46,10 @@ function filterChanged() {
     filter();
 
     filtersActive.value = filterRace.value || filterClass.value ? true : false;
+}
+
+function toggleFilters() {
+    filtersOpen.value = !filtersOpen.value;
 }
 
 function filter() {
@@ -123,8 +128,13 @@ function sortDate() {
                     <i class="gg-search"></i>
                 </button>
             </form>
+            <button @click="toggleFilters()" class="filter-toggler">
+                <i class="gg-sort-az"></i>
+                Filtrer
+            </button>
+            
         </div>
-        <div class="filters">
+        <div class="filters" v-if="filtersOpen">
             <select class="dropdown" v-model="filterRace" @change="filterChanged()">
                 <option value="">Velg rase</option>
                 <option v-for="(item, key) in uniqueRaces" :key="key" :value="item">
@@ -175,6 +185,19 @@ function sortDate() {
 </template>
 
 <style scoped>
+.filter-toggler {
+    display: flex;
+    background: none;
+    border: 1px solid #4a4a4a;
+    border-radius: 0.35rem;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    color: #4a4a4a;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
 .filters {
     margin-top: 10px;
     display: flex;
@@ -189,6 +212,8 @@ function sortDate() {
 }
 .char-inner {
     padding: 20px 10px 10px;
+    display: flex;
+    justify-content: space-between;
 }
 .list {
     padding-top: 10px;

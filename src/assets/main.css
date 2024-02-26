@@ -40,6 +40,10 @@ a,
   border-bottom: 1px solid #dddddd;
 }
 
+.styled-table th {
+  cursor: pointer;
+}
+
 .styled-table tbody tr:nth-of-type(even) {
   background-color: #f3f3f3;
 }
@@ -52,7 +56,13 @@ a,
   font-weight: bold;
   color: #009879;
 }
-
+.styled-table__flex {
+  display: flex;
+  justify-content: space-between;
+}
+.styled-table__flex:hover i {
+  color: #000;
+}
 
 /* CSS */
 .button {
@@ -98,6 +108,22 @@ a,
   background-color: #c85000;
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
+}
+
+/* Icons */
+
+.gg-sort-az, .gg-sort-za {
+  /* This value will multiple the actual size  */
+  --ggs: 0.9;
+  color: #666;
+}
+.gg-sort-az:hover, .gg-sort-za:hover {
+  /* This value will multiple the actual size  */
+  color: red;
+}
+.gg-arrows-v-alt {
+  --ggs: 0.8;
+  color: #666;
 }
 
 /* Utility */

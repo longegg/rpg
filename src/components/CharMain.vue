@@ -43,7 +43,7 @@ function filterChanged() {
 
     filter();
 
-    filtersActive.value = (filterRace.value || filterClass.value) ? true : false;
+    filtersActive.value = filterRace.value || filterClass.value ? true : false;
 }
 
 function filter() {
@@ -71,8 +71,8 @@ function clearSearch() {
 }
 
 function clearFilters() {
-    filterRace.value = "";
-    filterClass.value = "";
+    filterRace.value = '';
+    filterClass.value = '';
     filtersActive.value = false;
     submit();
 }
@@ -100,6 +100,7 @@ function sortDate() {
                         v-model="searchInput"
                         aria-label="search term"
                         @keydown.esc="clearSearch"
+                        placeholder="Søk på navn"
                     />
                     <button
                         type="reset"
@@ -152,7 +153,9 @@ function sortDate() {
                     {{ item }}
                 </option>
             </select>
-            <button v-if="filtersActive" class="clear-button" @click="clearFilters">Nulltill alle</button>
+            <button v-if="filtersActive" class="clear-button" @click="clearFilters">
+                Nulltill alle
+            </button>
         </div>
         <div class="list">
             <table v-if="filteredChars.length" class="styled-table">
@@ -162,7 +165,13 @@ function sortDate() {
                         <th>Rase</th>
                         <th>Klasse</th>
                         <th>Nivå</th>
-                        <th>Lagret <button @click="sortDate">Sort</button></th>
+                        <th @click="sortDate">
+                            <div class="styled-table__flex">
+                                Lagret
+                                <i class="gg-arrows-v-alt sort-icon"></i>
+                                <i class="gg-shape-triangle hidden sort-icon sort-icon--flipped"></i>
+                            </div>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -171,7 +180,9 @@ function sortDate() {
             </table>
             <div class="empty" v-else>
                 Ingen resultater.
-                <span v-if="searchActive">Du har søkt på: {{ searchInput }}</span>
+                <span v-if="searchActive"
+                    >Du har søkt på: <i>{{ searchInput }}</i></span
+                >
                 <span></span>
             </div>
         </div>
@@ -203,15 +214,29 @@ table {
 }
 .empty {
     padding: 20px;
-    display: flex;
+    /* display: flex; */
     /* flex-direction: column; */
 }
 .clear-button {
     outline: none;
     border: none;
     background: none;
-    color: #1EA7FD;
+    color: #1ea7fd;
     cursor: pointer;
+}
+.sort-button {
+    outline: none;
+    border: none;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    cursor: pointer;
+}
+.sort-icon {
+}
+.sort-icon--flipped {
+    transform: rotate(180deg) scale(0.5);
 }
 .clear-button:hover {
     text-decoration: underline;

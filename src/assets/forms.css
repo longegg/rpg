@@ -30,6 +30,9 @@
     border-radius: 0.35rem;
     transition: border-color .15s ease-in-out;    
 }
+.search-form__input::placeholder {
+    color: #666;
+}
 .search-form__input:focus {
     background-color: #fff;
     border-color: #1EA7FD;

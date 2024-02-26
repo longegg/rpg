@@ -11,7 +11,7 @@ Man skal kunne gjøre følgende operasjoner:
 
 *Bonus:*
 1. Oppdatere et felt
-2. Åpne en linje for å se detaljer
+2. Åpne en linje for å se detaljer 
 
 ## Vue Documentation
 

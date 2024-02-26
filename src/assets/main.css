@@ -40,7 +40,7 @@ a,
   border-bottom: 1px solid #dddddd;
 }
 
-.styled-table th {
+.styled-table th.sortable {
   cursor: pointer;
 }
 

@@ -149,7 +149,7 @@ function sortDate() {
                         <th>Rase</th>
                         <th>Klasse</th>
                         <th>Nivå</th>
-                        <th @click="sortDate">
+                        <th class="sortable" @click="sortDate">
                             <div class="styled-table__flex">
                                 Lagret
                                 <i v-if="!sortActive" class="gg-arrows-v-alt sort-icon"></i>

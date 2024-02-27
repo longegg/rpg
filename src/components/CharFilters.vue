@@ -16,7 +16,7 @@ import type { Character } from '@/types/Character';
     <input
       id="search"
       v-model="term"
-      @keyup="props.search(term)"
+      @keyup="props.search()"
     />
   </label>
 </template>

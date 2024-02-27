@@ -76,6 +76,12 @@ a,
 .btn:hover {
   border-color: #ccc;
 }
+.btn:focus-visible {
+  transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+  box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.5),
+      0 0 0 5px rgba(255, 255, 255, 0.7);
+}
 .btn--narrow {
   padding: 6px 15px;
 }

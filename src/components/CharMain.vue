@@ -3,7 +3,7 @@ import DATA from '../data/data.json';
 import type { Character } from '../types/Character';
 import { ref } from 'vue';
 import CharItem from './CharItem.vue';
-import modal from './ModalBox.vue';
+import CharacterModal from './modals/CharacterModal.vue';
 
 const characters = (DATA as Character[]).sort((a, b) => {
     return -a.createdAt.localeCompare(b.createdAt);
@@ -144,13 +144,13 @@ function sortDate() {
                     <i class="gg-add-r"></i>
                 </button>
 
-                <Teleport to="body">
-                    <modal :show="showModal" @close="showModal = false">
-                        <template #header>
-                            <h3>Legg til ny</h3>
-                        </template>
-                    </modal>
-                </Teleport>
+                <CharacterModal
+                    :show="showModal"
+                    :characters="characters"
+                    :races="uniqueRaces"
+                    :classes="uniqueClasses"
+                    @close="showModal = false"
+                />
             </div>
         </div>
         <div class="filters" v-if="filtersOpen">

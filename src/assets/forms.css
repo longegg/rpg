@@ -1,3 +1,38 @@
+/* Standard forms */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.form__group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.form__label {
+    font-weight: 500;
+}
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 6px 40px 6px 15px;
+    font-size: 16px;
+    font-weight: 400;
+    height: 38px;
+    color: #333;
+    /* background-color: #f6f9fc; */
+    border: 1px solid #ccc;
+    border-radius: 0.35rem;
+    transition: border-color .15s ease-in-out;    
+}
+.form .dropdown {
+    padding: 10px;
+    border-radius: 0.35rem;
+}
+
+/* Search Form */
+
 .search-form {
     display: flex;
     gap: 5px;

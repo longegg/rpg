@@ -15,16 +15,22 @@ Du kan gjøre følgende operasjoner:
 
 ## Getting Started
 
+The project is set up using the latest version of Vue and the official Vue project scaffolding tool `create-vue`.
+
 ### Dependencies
 
-Bun
+- Git: https://git-scm.com/downloads
+- Bun: https://bun.sh/docs/installation
 
-### Installing
+### Installation and setup
 
-``sh
+#### Clone the project
+
+```sh
 git clone git@github.com:longegg/rpg.git
+```
 
-### Project Setup
+#### Install packages with Bun
 
 ```sh
 bun install
@@ -50,13 +56,15 @@ bun run lint
 
 ## Deployment
 
-Deployment is set up using Github Pages.
+Deployment is set up using Github Pages. The script below will use the dist directory and push the contents to the branch `gh-pages` on Github. It is then served as a static site on https://longegg.github.io/rpg/. Deployment can be set up using Github Actions.
+
+#### Deploy from local machine
 
 ```sh
 bun run deploy
 ```
 
-### GH Setup Info
+## Additional Resources
 
-https://mkay11.medium.com/how-to-deploy-your-vite-vue-3-application-in-github-pages-2023-2b842f50576a
-https://github.com/tschaub/gh-pages#command-line-utility
+- https://mkay11.medium.com/how-to-deploy-your-vite-vue-3-application-in-github-pages-2023-2b842f50576a
+- https://github.com/tschaub/gh-pages

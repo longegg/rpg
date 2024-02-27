@@ -227,6 +227,7 @@ function charSaved() {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: auto;
 }
 .icons {
     display: flex;
@@ -266,15 +267,19 @@ function charSaved() {
     margin-top: 30px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 .char-inner {
     padding: 20px 10px 10px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 .list {
     padding-top: 10px;
     border-top: 1px solid #ddd;
+    overflow: auto;
 }
 table {
     width: 100%;
@@ -305,5 +310,11 @@ table {
 }
 .clear-button:hover {
     text-decoration: underline;
+}
+
+@media (min-width: 720px) {
+    .char-inner {
+        flex-wrap: nowrap;
+    }
 }
 </style>

@@ -24,7 +24,7 @@
 .features {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 2px;
   /* border-bottom: 1px solid rgba(0,0,0,0.1); */
   padding-bottom: 15px;
 }

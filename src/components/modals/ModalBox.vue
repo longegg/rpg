@@ -42,7 +42,7 @@ const props = defineProps<{
 }
 
 .modal-container {
-  width: 300px;
+  width: 90%;
   margin: auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -92,9 +92,15 @@ const props = defineProps<{
   transform: scale(1.1);
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 600px) {
   .modal-container {
     width: 500px;
+  }  
+}
+
+@media (min-width: 1024px) {
+  .modal-container {
+    width: 600px;
   }  
 }
 </style>

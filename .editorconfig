@@ -1,3 +1,5 @@
-[*.py]
+root = true
+
+[*.{js,ts,vue}]
 indent_style = space
 indent_size = 4

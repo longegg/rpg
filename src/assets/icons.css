@@ -1,0 +1,23 @@
+.gg-arrow-up, .gg-arrow-down {
+    --ggs: 0.9;
+    color: #999;
+  }
+  .gg-arrow-up {
+    margin-left: -7px;
+    margin-right: -7px;
+  }
+  .gg-close {
+    --ggs: 0.8;
+  }
+  .gg-sort-az {
+    color: #4a4a4a;
+    --ggs: 1;
+  }
+  .gg-add-r {
+    --ggs: 0.8;
+    color: #333;
+  }
+  .gg-template {
+    --ggs: 1.5;
+    color: var(--color-main);
+  }

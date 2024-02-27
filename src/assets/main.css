@@ -16,11 +16,15 @@ a,
   padding: 3px;
 }
 
+button, input, select {
+  font-family: inherit;
+}
+
 .styled-table {
   border-collapse: collapse;
   /* margin: 25px 0; */
   font-size: 0.9em;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   min-width: 400px;
   /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
 }
@@ -102,7 +106,6 @@ a,
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
@@ -156,6 +159,9 @@ a,
 .gg-add-r {
   --ggs: 0.8;
   color: #333;
+}
+.gg-template {
+  --ggs: 1.5;
 }
 
 /* Utility */

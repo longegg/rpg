@@ -11,5 +11,7 @@ import 'css.gg/icons/css/sort-az.css';
 import 'css.gg/icons/css/sort-za.css';
 import 'css.gg/icons/css/options.css';
 import 'css.gg/icons/css/add-r.css';
+import 'css.gg/icons/css/template.css';
+import 'css.gg/icons/css/check.css';
 
 createApp(App).mount('#app')

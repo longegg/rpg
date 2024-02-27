@@ -86,7 +86,7 @@ function clearFilters() {
     submit();
 }
 
-function sortDate(alternate = true) {
+function sortDate() {
     filteredChars.value = filteredChars.value.sort((a, b) => {
         if (sortOrder.value == 1) {
             return a.createdAt.localeCompare(b.createdAt);
@@ -95,9 +95,7 @@ function sortDate(alternate = true) {
         }
     });
     sortActive.value = true;
-    if (alternate) {
-        sortOrder.value = -sortOrder.value;
-    }
+    sortOrder.value = -sortOrder.value;
 }
 
 function charSaved() {

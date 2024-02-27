@@ -91,7 +91,7 @@
 }
 .search-form__submit {
     outline: none;
-    background-color: rgb(66, 153, 225);
+    background-color: var(--color-main);
     border: 1px solid #eee;
     color: white;
     padding: 0 15px;

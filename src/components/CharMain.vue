@@ -128,11 +128,10 @@ function sortDate() {
                     <i class="gg-search"></i>
                 </button>
             </form>
-            <button @click="toggleFilters()" class="filter-toggler">
-                <i class="gg-sort-az"></i>
-                Filtrer
+            <button @click="toggleFilters()" class="filter-toggler" :class="{ open : filtersOpen }">
+                <i class="gg-options"></i>
+                Filtre
             </button>
-            
         </div>
         <div class="filters" v-if="filtersOpen">
             <select class="dropdown" v-model="filterRace" @change="filterChanged()">
@@ -162,9 +161,18 @@ function sortDate() {
                         <th class="sortable" @click="sortDate">
                             <div class="styled-table__flex">
                                 Lagret
-                                <i v-if="!sortActive" class="gg-arrows-v-alt sort-icon"></i>
-                                <i v-if="sortActive && sortOrder == -1" class="gg-arrow-up"></i>
-                                <i v-if="sortActive && sortOrder == 1" class="gg-arrow-down"></i>
+                                <div class="icons">
+                                    <i :class="{ active: sortActive }" class="gg-arrow-down sort-icon"></i>
+                                    <i  v-if="!sortActive" class="gg-arrow-up sort-icon"></i>
+                                    <i
+                                        v-if="sortActive && sortOrder == 1"
+                                        class="gg-sort-az sort-icon"
+                                    ></i>
+                                    <i
+                                        v-if="sortActive && sortOrder == -1"
+                                        class="gg-sort-za sort-icon"
+                                    ></i>
+                                </div>
                             </div>
                         </th>
                     </tr>
@@ -185,18 +193,30 @@ function sortDate() {
 </template>
 
 <style scoped>
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
 .filter-toggler {
     display: flex;
     background: none;
-    border: 1px solid #4a4a4a;
+    border: 1px solid #ddd;
     border-radius: 0.35rem;
     align-items: center;
-    gap: 5px;
-    padding: 5px 10px;
-    color: #4a4a4a;
-    font-weight: bold;
+    gap: 12px;
+    padding: 10px 15px;
+    color: #222;
+    font-weight: normal;
     font-size: 12px;
     cursor: pointer;
+}
+.filter-toggler:hover {
+    border-color: #ccc;
+}
+.filter-toggler.open {
+    transition: box-shadow 0.2s cubic-bezier(0.2,0,0,1);
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.5),0 0 0 5px rgba(255,255,255,0.7);
 }
 .filters {
     margin-top: 10px;
@@ -208,7 +228,7 @@ function sortDate() {
 .char-holder {
     margin-top: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 .char-inner {
     padding: 20px 10px 10px;

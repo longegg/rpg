@@ -48,10 +48,6 @@ a,
   background-color: #f3f3f3;
 }
 
-.styled-table tbody tr:last-of-type {
-  /* border-bottom: 2px solid #009879; */
-}
-
 .styled-table tbody tr.active-row {
   font-weight: bold;
   color: #009879;
@@ -60,7 +56,7 @@ a,
   display: flex;
   justify-content: space-between;
 }
-.styled-table__flex:hover .sort-icon {
+.styled-table__flex:hover .sort-icon, .sort-icon.active {
   color: #333;
 }
 
@@ -112,21 +108,20 @@ a,
 
 /* Icons */
 
-.gg-arrows-v, .gg-arrows-v-alt {
+.gg-arrow-up, .gg-arrow-down {
   --ggs: 0.9;
   color: #999;
-  width: 22px;
-  margin-right: 5px;
 }
-.gg-arrow-up, .gg-arrow-down {
-  --ggs: 0.8;
-  color: #333;
+.gg-arrow-up {
+  margin-left: -7px;
+  margin-right: -7px;
 }
 .gg-close {
   --ggs: 0.8;
 }
 .gg-sort-az {
   color: #4a4a4a;
+  --ggs: 1;
 }
 
 /* Utility */

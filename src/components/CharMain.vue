@@ -13,14 +13,12 @@ const uniqueClasses = [...new Set(characters.map((item) => item.className))];
 const filterRace = ref('');
 const filterClass = ref('');
 const searchInput = ref('');
-
 let filteredChars = ref(characters);
 let searchActive = ref(false);
 let filtersActive = ref(false);
 let filtersOpen = ref(false);
 let sortOrder = ref(1);
 let sortActive = ref(false);
-
 const showModal = ref(false);
 
 function submit() {
@@ -45,9 +43,7 @@ function filterChanged() {
     } else {
         filteredChars.value = characters;
     }
-
     filter();
-
     filtersActive.value = filterRace.value || filterClass.value ? true : false;
 }
 
@@ -67,7 +63,6 @@ function filter() {
                 filtered = char.className == filterClass.value;
             }
         }
-
         return filtered;
     });
 }

@@ -60,6 +60,30 @@ a,
   color: #333;
 }
 
+.btn {
+  display: flex;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 0.35rem;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 15px;
+  color: #222;
+  font-weight: normal;
+  font-size: 12px;
+  cursor: pointer;
+}
+.btn:hover {
+  border-color: #ccc;
+}
+.btn--narrow {
+  padding: 6px 15px;
+}
+.btn--blue {
+  background-color: rgb(66, 153, 225);
+  color: white;
+}
+
 /* CSS */
 .button {
   align-items: center;
@@ -122,6 +146,10 @@ a,
 .gg-sort-az {
   color: #4a4a4a;
   --ggs: 1;
+}
+.gg-add-r {
+  --ggs: 0.8;
+  color: #333;
 }
 
 /* Utility */

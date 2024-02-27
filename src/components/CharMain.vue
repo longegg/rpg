@@ -3,6 +3,7 @@ import DATA from '../data/data.json';
 import type { Character } from '../types/Character';
 import { ref } from 'vue';
 import CharItem from './CharItem.vue';
+import modal from './ModalBox.vue';
 
 const characters = (DATA as Character[]).sort((a, b) => {
     return -a.createdAt.localeCompare(b.createdAt);
@@ -19,6 +20,8 @@ let filtersActive = ref(false);
 let filtersOpen = ref(false);
 let sortOrder = ref(1);
 let sortActive = ref(false);
+
+const showModal = ref(false);
 
 function submit() {
     if (!searchInput.value) {
@@ -128,10 +131,27 @@ function sortDate() {
                     <i class="gg-search"></i>
                 </button>
             </form>
-            <button @click="toggleFilters()" class="filter-toggler" :class="{ open : filtersOpen }">
-                <i class="gg-options"></i>
-                Filtre
-            </button>
+            <div class="add-container">
+                <button
+                    @click="toggleFilters()"
+                    class="filter-toggler"
+                    :class="{ open: filtersOpen }"
+                >
+                    <i class="gg-options"></i>
+                    Filtre
+                </button>
+                <button class="btn btn--narrow" id="show-modal" @click="showModal = true">
+                    <i class="gg-add-r"></i>
+                </button>
+
+                <Teleport to="body">
+                    <modal :show="showModal" @close="showModal = false">
+                        <template #header>
+                            <h3>Legg til ny</h3>
+                        </template>
+                    </modal>
+                </Teleport>
+            </div>
         </div>
         <div class="filters" v-if="filtersOpen">
             <select class="dropdown" v-model="filterRace" @change="filterChanged()">
@@ -162,8 +182,11 @@ function sortDate() {
                             <div class="styled-table__flex">
                                 Lagret
                                 <div class="icons">
-                                    <i :class="{ active: sortActive }" class="gg-arrow-down sort-icon"></i>
-                                    <i  v-if="!sortActive" class="gg-arrow-up sort-icon"></i>
+                                    <i
+                                        :class="{ active: sortActive }"
+                                        class="gg-arrow-down sort-icon"
+                                    ></i>
+                                    <i v-if="!sortActive" class="gg-arrow-up sort-icon"></i>
                                     <i
                                         v-if="sortActive && sortOrder == 1"
                                         class="gg-sort-az sort-icon"
@@ -193,6 +216,11 @@ function sortDate() {
 </template>
 
 <style scoped>
+.add-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 .icons {
     display: flex;
     align-items: center;
@@ -215,8 +243,10 @@ function sortDate() {
     border-color: #ccc;
 }
 .filter-toggler.open {
-    transition: box-shadow 0.2s cubic-bezier(0.2,0,0,1);
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.5),0 0 0 5px rgba(255,255,255,0.7);
+    transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.5),
+        0 0 0 5px rgba(255, 255, 255, 0.7);
 }
 .filters {
     margin-top: 10px;

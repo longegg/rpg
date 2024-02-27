@@ -15,6 +15,7 @@
   "dependencies": {
     "@vueuse/core": "^10.7.2",
     "css.gg": "^2.1.1",
+    "gh-pages": "^6.1.1",
     "vue": "^3.4.15"
   },
   "devDependencies": {

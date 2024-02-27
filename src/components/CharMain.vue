@@ -86,7 +86,7 @@ function clearFilters() {
     submit();
 }
 
-function sortDate() {
+function sortDate(alternate = true) {
     filteredChars.value = filteredChars.value.sort((a, b) => {
         if (sortOrder.value == 1) {
             return a.createdAt.localeCompare(b.createdAt);
@@ -94,8 +94,16 @@ function sortDate() {
             return -a.createdAt.localeCompare(b.createdAt);
         }
     });
-    sortOrder.value = -sortOrder.value;
     sortActive.value = true;
+    if (alternate) {
+        sortOrder.value = -sortOrder.value;
+    }
+}
+
+function charSaved() {
+    clearSearch();
+    clearFilters();
+    showModal.value = false;
 }
 </script>
 
@@ -150,6 +158,7 @@ function sortDate() {
                     :races="uniqueRaces"
                     :classes="uniqueClasses"
                     @close="showModal = false"
+                    @save="charSaved"
                 />
             </div>
         </div>

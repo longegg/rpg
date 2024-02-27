@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref, toRefs } from 'vue';
+import { reactive, ref, toRefs } from 'vue';
 import modal from '../modals/ModalBox.vue';
 import type { Character } from '../../types/Character';
 
@@ -21,16 +21,17 @@ const emit = defineEmits<{
 
 type FormData = {
     name: string;
+    race: string;
+    class: string;
+    level: number;
 };
 
-const formData = reactive({} as FormData);
-
-const nameInput = ref('');
-const selectedRace = ref(races.value[0]);
-const selectedClass = ref(classes.value[0]);
-const levelInput = ref(1);
-
-const isValidName = computed(() => formData.name.length > 0);
+const formData = reactive({
+    name: "",
+    race: races.value[0],
+    class: classes.value[0],
+    level: 1
+} as FormData);
 
 const close = () => emit('close');
 
@@ -39,14 +40,14 @@ function save() {
     // Return new list with added item and close modal.
 
     characters.value.push({
-        name: nameInput.value,
-        race: selectedRace.value,
-        className: selectedClass.value,
-        level: levelInput.value,
+        name: formData.name,
+        race: formData.race,
+        className: formData.class,
+        level: formData.level,
         createdAt: new Date().toISOString()
     } as Character);
 
-    emit('close');
+    emit('save', 1);
 }
 </script>
 
@@ -65,14 +66,14 @@ function save() {
                                 id="name"
                                 class="form__input"
                                 type="text"
-                                v-model="nameInput"
+                                v-model="formData.name"
                                 aria-label="search term"
                                 placeholder=""
                             />
                         </div>
                         <div class="form__group">
                             <label class="form__label" for="race">Rase:</label>
-                            <select id="race" class="dropdown" v-model="selectedRace">
+                            <select id="race" class="dropdown" v-model="formData.race">
                                 <option v-for="(item, key) in races" :key="key" :value="item">
                                     {{ item }}
                                 </option>
@@ -80,7 +81,7 @@ function save() {
                         </div>
                         <div class="form__group">
                             <label class="form__label" for="race">Klasse:</label>
-                            <select class="dropdown" v-model="selectedClass">
+                            <select class="dropdown" v-model="formData.class">
                                 <option value="">Velg klasse</option>
                                 <option v-for="(item, key) in classes" :key="key" :value="item">
                                     {{ item }}
@@ -92,7 +93,7 @@ function save() {
                             <input
                             class="form__input"
                             type="number"
-                            v-model="levelInput"
+                            v-model="formData.level"
                             aria-label="search term"
                             placeholder="Nivå"
                         />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, ref, toRefs } from 'vue';
+import { reactive, toRefs } from 'vue';
 import modal from '../modals/ModalBox.vue';
 import type { Character } from '../../types/Character';
 
@@ -10,9 +10,7 @@ const props = defineProps<{
     classes: any;
 }>();
 
-const { characters } = toRefs(props);
-const { races } = toRefs(props);
-const { classes } = toRefs(props);
+const { characters, races, classes } = toRefs(props);
 
 const emit = defineEmits<{
     (e: 'close'): void;
@@ -36,9 +34,6 @@ const formData = reactive({
 const close = () => emit('close');
 
 function save() {
-    console.log('save');
-    // Return new list with added item and close modal.
-
     characters.value.push({
         name: formData.name,
         race: formData.race,
@@ -93,12 +88,14 @@ function save() {
                             <input
                             class="form__input"
                             type="number"
+                            min="1"
+                            max="10"
+                            pattern="\d*"
                             v-model="formData.level"
                             aria-label="search term"
                             placeholder="Nivå"
                         />
                         </div>
-          
                     </form>
                 </template>
                 <template #actions>
